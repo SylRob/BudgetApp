@@ -4,8 +4,6 @@ var List = (function() {
     function List( id, DB ) {
 
         this.DB = DB;
-
-        this.config = {};
         this.infos = {};
         this.elems = [];
 
@@ -25,13 +23,6 @@ var List = (function() {
         this.infos.name = data.name;
         this.infos.description = data.description;
         this.infos.nbrOfElements = data.nbrOfElements;
-
-    }
-
-
-    List.prototype.setConfig = function( data ) {
-
-        this.config.notify = data.notify;
 
     }
 
@@ -56,7 +47,6 @@ var List = (function() {
 
                 var myList = lists[arrID];
                 _this.setInfos( myList.infos );
-                _this.setConfig( myList.config );
                 _this.setElems( myList.elems );
 
                 break;
@@ -94,8 +84,6 @@ var List = (function() {
         var _this = this;
 
         var myObj = {};
-
-        myObj.config = this.config;
         myObj.infos = this.infos;
         myObj.elems = this.elems;
 

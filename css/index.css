@@ -28,12 +28,22 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: 'Lato', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
+    color: #FFFFFF;
     height:100%;
     margin:0px;
     padding:0px;
     width:100%;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 #wrapper {
@@ -55,6 +65,127 @@ body {
     height: 100px;
     background-color: #2b7a53;
     cursor: pointer;
+}
+
+#newBtn:active {
+    background-color: #2B6055;
+}
+
+h1 {
+    font-weight: 200;
+    color: #FFFFFF;
+    font-size: 4em;
+    text-align: center;
+}
+
+.mainContainer {
+    padding: 10em 0 3em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 94%;
+    background-color: #1C83D1;
+    padding: 5% 3% 3% 3%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate(-50%, -50%);
+}
+
+.modal .title {
+    text-align: center;
+    font-size: 4em;
+    padding-bottom: 8%;
+}
+
+.modal .form {
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 2.5em;
+}
+
+.modal label {
+    margin-right: 0.5em;
+}
+
+.modal input[type="text"]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
+    width: 8em;
+    color: #FFFFFF;
+    padding-bottom: 1%;
+}
+
+.modal .bottomLink {
+    padding-top: 3em;
+    text-align: center;;
+}
+
+.modal .bottomLink a {
+    display: inline-block;
+}
+
+.modal .bottomLink a:active {
+    background-color: #1C4DC5;
+}
+
+.modal .bottomLink.twoChoice a {
+    width: 49%;
+    font-size: 1.8em;
+    font-style: italic;
+    padding: 1.5% 0;
+}
+
+.modal .bottomLink.twoChoice a:first-child {
+    border-right: 1px solid #FFFFFF;
+}
+
+.ngdialog {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 14%;
+    overflow: hidden;
+}
+
+.ngdialog-content {
+    width: 80%;
+    padding: 5%;
+    color: #000000;
+    background-color: #FFFFFF;
+    font-size: 1.7em;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border: 1px solid transparent;
+    -ms-transform: translate(-50%, 0);
+    -webkit-transform: translate3d(-50%,0,0);
+    transform: translate(-50%,0);
+    -webkit-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
+}
+
+.ngdialog-theme-red.ngdialog-content {
+    color: #F2DEDE;
+    background-color: #EBCCD1;
+    border-color: #EBCCD1;
+}
+
+.ngdialog-theme-green.ngdialog-content {
+    color: #3C763D;
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+}
+
+.ngdialog-close {
+    display: none;
 }
 
 /* Landscape layout (with min-width) */

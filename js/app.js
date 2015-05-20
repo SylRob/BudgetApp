@@ -40,5 +40,8 @@ var myApp = angular.module('BudgetApp', ['ngRoute'])
 .factory('DB', function(){
     return new DBLocal('BudgetApp');
 })
+.factory('ngDialog', function(){
+    return new ngDialog();
+})
 .controller('MainController', ['$scope', '$routeParams', '$location', 'DB', MainController])
-.controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', HomeController])
+.controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', HomeController])

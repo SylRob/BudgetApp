@@ -1,9 +1,18 @@
-<div id="bugetBlock" class="blockList">
-    <div class="list" ng-repeat="listData in listData">
+<h1>Budget App</h1>
 
+<div id="bugetBlock" class="blockList">
+    <div class="list" ng-repeat="listData in listDatas">
+        {{listData.infos.name}}
     </div>
 </div>
 
-<div id="new">
+<div id="modalNew" class="modal">
     <p class="title">New Budget</p>
+    <form name="form" class="css-form">
+        <p class="form">
+            <label for="inputName">Name :</label>
+            <input name="inputName" ng-model="form.name" id="inputName" type="text" />
+        </p>
+    </form>
+    <p class="bottomLink twoChoice"><a href="" ng-click="modalSave()">Save</a><a href="" ng-click="modalClose()">Cancel</a></p>
 </div>

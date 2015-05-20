@@ -4,14 +4,9 @@ var Item = (function() {
     function Item( id, List ) {
 
         this.List = List;
-        this.config = {};
         this.infos = {};
-        this.done = false;
 
         if ( undefined != id && '' != id ) this.getFromId( id );
-
-
-
     }
 
 
@@ -25,27 +20,9 @@ var Item = (function() {
 
         this.infos.id = data.id;
         this.infos.name = data.name;
-        this.infos.memo = data.memo;
-        this.infos.from = data.from;
-        this.infos.to = data.to;
-        this.done = data.done;
+        this.infos.creationDate = data.creationDate;
+        this.infos.montant = data.montant;
     }
-
-    Item.prototype.setConfig = function( data ) {
-
-        this.config.notify = data.notify;
-        this.config.notifyTime = data.notifyTime;
-
-    }
-
-
-    Item.prototype.setDone = function() {
-
-        if ( this.done ) this.done = false;
-        else this.done = true;
-
-    }
-
 
     Item.prototype.getFromId = function( id ) {
         var _this = this;
@@ -58,7 +35,6 @@ var Item = (function() {
 
                 var myItem = items[arrID].infos;
 
-                myItem.done = items[arrID].done;
                 _this.setInfos(myItem);
 
                 break;
@@ -97,8 +73,6 @@ var Item = (function() {
         var myObj = {};
 
         myObj.infos = this.infos;
-        myObj.config = this.config;
-        myObj.done = this.done;
 
         if (!update) {
             this.List.addItem( myObj );
