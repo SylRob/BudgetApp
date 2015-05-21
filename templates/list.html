@@ -1,0 +1,41 @@
+<h1>{{listInfo.name}}</h1>
+
+
+<div class="itemModule" id="filterBox">
+    <p>
+        From
+        <select>
+            <option value="today">Today</option>
+            <option value="thisMonth">this Month</option>
+            <option value="threeMonth">last 3 Month</option>
+            <option value="sixMonth">last 6 Month</option>
+            <option value="thisYear">this Year</option>
+            <option value="Start" selected="selected">Start</option>
+        </select>
+    </p>
+</div>
+
+<div class="itemModule" id="totalBox">
+    <p><span>Total :</span><span>{{elemsData | sumOfPriceService:'price'}}&euro;<span></p>
+</div>
+
+<div class="itemModule">
+    <last-ten-results-directive elems-data="elemsData"></last-ten-results-directive>
+</div>
+
+<div id="modalNew" class="modal">
+    <div class="modalInner">
+        <p class="title">New Item</p>
+        <form name="form" class="css-form">
+            <p class="form">
+                <label for="inputName">Name :</label>
+                <input name="inputName" ng-model="form.name" id="inputName" type="text" />
+            </p>
+            <p class="form">
+                <label for="inputName">Price :</label>
+                <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" /> &euro;
+            </p>
+        </form>
+        <p class="bottomLink twoChoice"><a href="" ng-click="modalSave()">Save</a><a href="" ng-click="modalClose()">Cancel</a></p>
+    </div>
+</div>

@@ -24,15 +24,19 @@ document.addEventListener('deviceready', function() {
 
 }, false);
 
-var myApp = angular.module('BudgetApp', ['ngRoute'])
+var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults'])
 .config( ['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/top', {
             templateUrl: 'templates/top.html',
             controller: 'HomeController'
-        }).
-        otherwise({
+        })
+        .when('/:listId/Overview', {
+            templateUrl: 'templates/list.html',
+            controller: 'ListController'
+        })
+        .otherwise({
             redirectTo: '/top'
         });
     }
@@ -41,7 +45,42 @@ var myApp = angular.module('BudgetApp', ['ngRoute'])
     return new DBLocal('BudgetApp');
 })
 .factory('ngDialog', function(){
-    return new ngDialog();
+    return {
+        getInstance: ngDialog
+    }
+})
+.factory('List', ['DB', function(){
+    return {
+        getInstance: List
+    }
+}])
+.factory('Item', ['DB', 'List', function(){
+    return {
+        getInstance: Item
+    }
+}])
+.filter('sumOfPriceService', function(){
+    return function( data, key ){
+
+        if(data !== Object(data)) {
+            console.log(typeof data)
+            return 0;
+        };
+
+        var sum = 0;
+        for (var i = 0; i < data.length; i++) {
+             sum += parseInt(data[i].infos.price);
+        }
+
+        return sum;
+    }
+})
+.filter('dateFormatService', function($filter){
+    return function( data ){
+        var dateElem = data.substr(-2, 2) + '/' + data.substr(-4, 2) + '/' +data.substr(0, 4);
+        return dateElem;
+    }
 })
 .controller('MainController', ['$scope', '$routeParams', '$location', 'DB', MainController])
-.controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', HomeController])
+.controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', HomeController])
+.controller('ListController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', 'Item', ListController])

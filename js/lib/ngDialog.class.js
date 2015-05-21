@@ -16,6 +16,7 @@ var ngDialog = (function() {
     var userOptions = {}
 
     function ngDialog(){
+
         this.elem = '';
         this.init();
     }
@@ -67,8 +68,7 @@ var ngDialog = (function() {
     }
 
     ngDialog.prototype.destroy = function() {
-        var parent = this.elem.parentNode;
-        parent.removeChild(this.elem);
+        this.elem.parentNode.removeChild(this.elem);
     }
 
     return ngDialog;

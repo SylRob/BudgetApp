@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+#LTRwrapper {
+    padding: 2%;
+}
+
+#LTRwrapper h3 {
+    font-size: 1.7em;
+    border-bottom: 3px solid #CCCCCC;
+    padding-bottom: 2%;
+}
+
+#LTRBlock {
+    margin: 0 auto;
+}
+
+#LTRBlock ul {
+    display: block;
+    margin-top: 2%;
+}
+
+#LTRBlock ul li {
+    display: table;
+    font-size: 1.7em;
+    color: #FFFFFF;
+    width: 100%;
+    margin: 1% 0;
+    padding: 2% 0 1% 0;
+    border-top: 1px dotted #000000;
+}
+
+#LTRBlock ul li:first-child {
+    border: none;
+}
+
+#LTRBlock ul li .LTRname {
+    font-size: 1.2em;
+    margin-bottom: 1%;
+    display: table-row;
+}
+
+#LTRBlock ul li .LTRinfos {
+    display: table-cell;
+    text-align: right;
+}
+
+#LTRBlock ul li .LTRaction{
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+#LTRBlock ul li .LTRaction button {
+    border: none;
+    margin-right: 2em;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+#LTRBlock ul li .LTRaction .edit{
+    background: url('../img/ico_edit.svg') top center no-repeat;
+    background-size: 100% auto;
+}
+
+#LTRBlock ul li .LTRaction .remove{
+    background: url('../img/ico_close.svg') top center no-repeat;
+    background-size: 100% auto;
+}
+
+#LTRBlock ul li .LTRinfos .date {
+    font-size: 1em;
+    font-style: italic;
+}
+
+#LTRBlock ul li .LTRinfos .price {
+    font-size: 2em;
+    font-weight: 200;
+    padding-top: 1%;
+}

@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -50,6 +51,7 @@ a:hover {
     width: 100%;
     height: 100%;
     background-color: #2ca4ad;
+    overflow: auto;
 }
 
 #newBtn {
@@ -64,7 +66,10 @@ a:hover {
     width: 100px;
     height: 100px;
     background-color: #2b7a53;
+    border: 1px solid #FFFFFF;
     cursor: pointer;
+    -webkit-box-shadow: 2px 5px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 5px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 #newBtn:active {
@@ -76,15 +81,39 @@ h1 {
     color: #FFFFFF;
     font-size: 4em;
     text-align: center;
+    margin-bottom: 1em;
 }
 
 .mainContainer {
     padding: 10em 0 3em;
 }
 
+.list {
+    text-align: center;
+    margin: 0 auto;
+    padding: 3% 10% 3% 3%;
+    font-size: 1.7em;
+    border: 1px solid #FFFFFF;
+    width: 85%;
+    background: url('../img/ico_whiteArrow.svg') #1C83D1 95% center no-repeat;
+    background-size: 2% auto;
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
 .modal {
-    display: none;
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba( 0, 0, 0, 0.2);
+    z-index: 99;
+    display: none;
+}
+
+.modalInner {
+    position: absolute;
     top: 50%;
     left: 50%;
     width: 94%;
@@ -107,10 +136,12 @@ h1 {
     margin: 0 auto;
     width: 80%;
     font-size: 2.5em;
+    margin-bottom: 0.8em;
 }
 
 .modal label {
-    margin-right: 0.5em;
+    display: inline-block;
+    width: 4em;
 }
 
 .modal input[type="text"]{
@@ -123,7 +154,7 @@ h1 {
 }
 
 .modal .bottomLink {
-    padding-top: 3em;
+    padding-top: 2.2em;
     text-align: center;;
 }
 
@@ -173,7 +204,7 @@ h1 {
 }
 
 .ngdialog-theme-red.ngdialog-content {
-    color: #F2DEDE;
+    color: #A94442;
     background-color: #EBCCD1;
     border-color: #EBCCD1;
 }
@@ -188,6 +219,45 @@ h1 {
     display: none;
 }
 
+
+
+/***
+
+    Item page
+
+***/
+
+.itemModule {
+    width: 95%;
+    margin: 5% auto;
+    background-color: #2B7A53;
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#totalBox {
+
+}
+
+#totalBox p {
+    padding: 3%;
+    font-size: 2em;
+    display: table;
+    width: 94%;
+}
+
+#totalBox p span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#totalBox p span:last-child {
+    text-align: right;
+    font-weight: 200;
+    font-size: 2em;
+}
+
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 
@@ -200,6 +270,14 @@ h1 {
         font-size: 60px;
         width: 70px;
         height: 70px;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+
+    body {
+        font-size: 15px;
     }
 
 }

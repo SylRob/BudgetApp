@@ -18,10 +18,10 @@ var Item = (function() {
 
     Item.prototype.setInfos = function( data ) {
 
-        this.infos.id = data.id;
-        this.infos.name = data.name;
-        this.infos.creationDate = data.creationDate;
-        this.infos.montant = data.montant;
+        this.infos.id = data.id || this.infos.id;
+        this.infos.name = data.name || this.infos.name;
+        this.infos.nbrOfElements = data.nbrOfElements || this.infos.nbrOfElements;
+        this.infos.price = data.price || this.infos.price;
     }
 
     Item.prototype.getFromId = function( id ) {
@@ -75,6 +75,11 @@ var Item = (function() {
         myObj.infos = this.infos;
 
         if (!update) {
+            /*
+            new Item,
+            set creation date*/
+            var date = new Date();
+            myObj.dateOfCreation = date.getFullYear() + (date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth()) + (date.getDate() < 10 ? '0'+date.getDate() : date.getDate())
             this.List.addItem( myObj );
         } else {
 

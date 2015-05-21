@@ -19,10 +19,9 @@ var List = (function() {
 
     List.prototype.setInfos = function( data ) {
 
-        this.infos.id = data.id;
-        this.infos.name = data.name;
-        this.infos.description = data.description;
-        this.infos.nbrOfElements = data.nbrOfElements;
+        this.infos.id = data.id || this.infos.id;
+        this.infos.name = data.name || this.infos.name;
+        this.infos.nbrOfElements = data.nbrOfElements || this.infos.nbrOfElements;
 
     }
 
@@ -88,6 +87,11 @@ var List = (function() {
         myObj.elems = this.elems;
 
         if (!update) {
+            /*
+            new List,
+            set creation date*/
+            var date = new Date();
+            myObj.dateOfCreation = date.getFullYear() + (date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth()) + (date.getDate() < 10 ? '0'+date.getDate() : date.getDate())
             this.DB.addData( myObj );
         } else {
 
@@ -110,7 +114,7 @@ var List = (function() {
 
     }
 
-    List.prototype.addElem = function(data) {
+    List.prototype.addItem = function(data) {
 
         this.elems.push(data);
         this.save(true);

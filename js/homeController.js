@@ -1,4 +1,4 @@
-var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog ) {
+var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog, List ) {
 
     $scope.listDatas = DB.getElem();
 
@@ -17,13 +17,20 @@ var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog ) 
         $(newModalElem).fadeOut(500)
     }
 
+    $scope.goTo = function(id) {
+        $location.path( '/'+id+'/Overview' );
+    }
+
     $scope.modalSave = function() {
 
-        var listToSave = new List( false , DB );
+        var listToSave = new List.getInstance(false , DB),
+        name = $scope.form.name || '';
+
+        if( false === checkForm(name) ) return false;
 
         var myNewListObj = {};
 
-        myNewListObj.name = $scope.form.name;
+        myNewListObj.name = name;
         myNewListObj.nbrOfElements = 0;
         myNewListObj.elem = {};
 
@@ -36,11 +43,30 @@ var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog ) 
         $scope.listDatas = DB.getElem();
         $scope.modalClose();
 
-        ngDialog.open({
-            content: '<p>The new list : '+$scope.form.name+' has been saved</p>',
+        var dialogBox = new ngDialog.getInstance();
+        dialogBox.open({
+            content: '<p>The new list : '+name+' has been saved</p>',
             class: 'ngdialog-theme-green'
         })
 
+    }
+
+    function checkForm( name ) {
+        var dialogBox = new ngDialog.getInstance();
+
+        if( name == '' ) {
+            dialogBox.open({
+                content: '<p>A Budget list name cannot be empty</p>',
+                class: 'ngdialog-theme-red'
+            });
+            return false;
+        } else if( name.length > 50 ) {
+            dialogBox.open({
+                content: '<p>A Budget list name cannot more than 50 characters</p>',
+                class: 'ngdialog-theme-red'
+            });
+            return false;
+        }
     }
 
 }

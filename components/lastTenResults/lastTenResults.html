@@ -1,0 +1,21 @@
+<div id="LTRwrapper">
+    <h3>Last 5 entry</h3>
+    <div id="LTRBlock">
+        <ul>
+            <li ng-repeat="elem in elemsData">
+                <p class="LTRname">
+                    {{elem.infos.name}}
+                </p>
+                <div class="LTRaction">
+                    <button class="edit" ng-click="LTRclick"></button>
+                    <button class="remove" ng-click="LTRremove"></button>
+                </div>
+                <div class="LTRinfos">
+                    <p class="date">{{elem.dateOfCreation | dateFormatService}}</p>
+                    <p class="price">{{elem.infos.price}}<span class="devise">&euro;</span></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<br />
