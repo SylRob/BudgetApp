@@ -10,6 +10,8 @@ var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     };
 
     var openModal = function(){
+        $scope.form.name = '';
+        $(newModalElem).find('input').val('');
         $(newModalElem).fadeIn(500, function(){ $(newModalElem).find('input').focus() })
     }
 

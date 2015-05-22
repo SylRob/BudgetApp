@@ -20,28 +20,27 @@ var Item = (function() {
 
         this.infos.id = data.id || this.infos.id;
         this.infos.name = data.name || this.infos.name;
-        this.infos.nbrOfElements = data.nbrOfElements || this.infos.nbrOfElements;
         this.infos.price = data.price || this.infos.price;
     }
 
-    Item.prototype.getFromId = function( id ) {
+    Item.prototype.getFromId = function( id ){
+
         var _this = this;
 
-        var items = this.List.items;
+        var items = this.List.elems;
 
         for( var arrID in items ) {
 
             if ( id == items[arrID].infos.id ) {
 
                 var myItem = items[arrID].infos;
-
+                _this.dateOfCreation = items[arrID].dateOfCreation;
                 _this.setInfos(myItem);
 
                 break;
             }
 
         }
-
 
     }
 
@@ -51,7 +50,7 @@ var Item = (function() {
 
         if ( undefined == this.infos.id || '' == this.infos.id ) return false;
 
-        var items = this.List.items;
+        var items = this.List.elems;
         var toSave = [];
 
         for( var arrID in items ) {
@@ -61,7 +60,7 @@ var Item = (function() {
             }
         }
 
-        this.List.setItems( toSave );
+        this.List.setElems( toSave );
         this.List.save(true);
 
     }
@@ -79,19 +78,19 @@ var Item = (function() {
             new Item,
             set creation date*/
             var date = new Date();
-            myObj.dateOfCreation = date.getFullYear() + (date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth()) + (date.getDate() < 10 ? '0'+date.getDate() : date.getDate())
+            myObj.dateOfCreation = date.getFullYear() + (date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth()) + (date.getDate() < 10 ? '0'+date.getDate() : date.getDate());
             this.List.addItem( myObj );
         } else {
 
-            var items = this.List.items;
-
+            var items = this.List.elems;
             for( var arrID in items ) {
 
                 if ( _this.infos.id == items[arrID].infos.id ) {
+                    myObj.dateOfCreation = _this.dateOfCreation;
 
                     items[arrID] = myObj;
 
-                    _this.List.setItems( items );
+                    _this.List.setElems( items );
                     _this.List.save(true);
 
                     break;

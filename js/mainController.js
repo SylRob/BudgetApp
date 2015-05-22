@@ -12,5 +12,7 @@ var MainController = function ( $scope, $routeParams, $location, DB ) {
     $scope.data = data;
 
     $scope.newElem = {};
+    $scope.removeElem = {};
+    $scope.editElem = {};
 
 }

@@ -54,7 +54,7 @@ var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults']
         getInstance: List
     }
 }])
-.factory('Item', ['DB', 'List', function(){
+.factory('Item', ['List', function(){
     return {
         getInstance: Item
     }
@@ -62,10 +62,7 @@ var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults']
 .filter('sumOfPriceService', function(){
     return function( data, key ){
 
-        if(data !== Object(data)) {
-            console.log(typeof data)
-            return 0;
-        };
+        if(data !== Object(data)) return 0;
 
         var sum = 0;
         for (var i = 0; i < data.length; i++) {
@@ -83,4 +80,4 @@ var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults']
 })
 .controller('MainController', ['$scope', '$routeParams', '$location', 'DB', MainController])
 .controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', HomeController])
-.controller('ListController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', 'Item', ListController])
+.controller('ListController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', 'Item', ListController]);

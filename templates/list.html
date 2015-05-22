@@ -1,5 +1,8 @@
-<h1>{{listInfo.name}}</h1>
-
+<h1 id="listName"><input value="{{listInfo.name}}" type="text" disabled="disabled" /></h1>
+<div class="actionBlock">
+    <button class="edit actionBtn" ng-click="editList()"></button>
+    <button class="remove actionBtn" ng-click="removeList()"></button>
+</div>
 
 <div class="itemModule" id="filterBox">
     <p>
@@ -20,22 +23,37 @@
 </div>
 
 <div class="itemModule">
-    <last-ten-results-directive elems-data="elemsData"></last-ten-results-directive>
+    <last-ten-results-directive elems-data="elemsData" remove-elem="removeElem" edit-elem="editElem"></last-ten-results-directive>
 </div>
 
 <div id="modalNew" class="modal">
     <div class="modalInner">
         <p class="title">New Item</p>
         <form name="form" class="css-form">
+            <input name="inputId" ng-model="form.id" value="{{form.id}}" id="inputId" type="hidden" />
             <p class="form">
                 <label for="inputName">Name :</label>
-                <input name="inputName" ng-model="form.name" id="inputName" type="text" />
+                <input name="inputName" ng-model="form.name" id="inputName" type="text" value="{{form.name}}" />
             </p>
             <p class="form">
                 <label for="inputName">Price :</label>
-                <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" /> &euro;
+                <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" value="{{form.price}}" /> &euro;
             </p>
         </form>
         <p class="bottomLink twoChoice"><a href="" ng-click="modalSave()">Save</a><a href="" ng-click="modalClose()">Cancel</a></p>
+    </div>
+</div>
+
+<div id="modalRemove" class="modal">
+    <div class="modalInner">
+        <p class="title">Are you sure you want to erase <i>{{ItemToErase}}</i>?</p>
+        <p class="bottomLink twoChoice"><a href="" ng-click="eraseIt(eraseId)">Yes</a><a href="" ng-click="modalClose()">No</a></p>
+    </div>
+</div>
+
+<div id="modalRemoveList" class="modal">
+    <div class="modalInner">
+        <p class="title">Are you sure you want to erase <i>{{listInfo.name}}</i> and all its elements ?</p>
+        <p class="bottomLink twoChoice"><a href="" ng-click="eraseTheList()">Yes</a><a href="" ng-click="modalClose()">No</a></p>
     </div>
 </div>

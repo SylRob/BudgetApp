@@ -3,7 +3,9 @@ var lastTenResults = angular.module('lastTenResults', [])
     return {
         templateUrl : "components/lastTenResults/lastTenResults.html",
         scope : {
-            elemsData : '='
+            LTRelemsData : '=elemsData',
+            LTRremoveElem: '=removeElem',
+            LTReditElem:   '=editElem'
         }
     }
 })

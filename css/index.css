@@ -47,6 +47,10 @@ a:hover {
     text-decoration: none;
 }
 
+i {
+    font-style: italic;
+}
+
 #wrapper {
     width: 100%;
     height: 100%;
@@ -65,6 +69,7 @@ a:hover {
     font-size: 100px;
     width: 100px;
     height: 100px;
+    z-index: 8;
     background-color: #2b7a53;
     border: 1px solid #FFFFFF;
     cursor: pointer;
@@ -84,6 +89,15 @@ h1 {
     margin-bottom: 1em;
 }
 
+h1 input {
+    font-weight: 200;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: transparent;
+    max-width: 100%;
+    border: none;
+}
+
 .mainContainer {
     padding: 10em 0 3em;
 }
@@ -95,20 +109,20 @@ h1 {
     font-size: 1.7em;
     border: 1px solid #FFFFFF;
     width: 85%;
-    background: url('../img/ico_whiteArrow.svg') #1C83D1 95% center no-repeat;
-    background-size: 2% auto;
+    background: url('../img/ico_whiteArrow.svg') #1C83D1 right center no-repeat;
+    background-size: auto 32px;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .modal {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba( 0, 0, 0, 0.2);
-    z-index: 99;
+    z-index: 15;
     display: none;
 }
 
@@ -183,6 +197,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 14%;
+    z-index: 18;
     overflow: hidden;
 }
 
@@ -255,6 +270,38 @@ h1 {
     text-align: right;
     font-weight: 200;
     font-size: 2em;
+}
+
+#filterBox p {
+    font-size: 1.7em;
+}
+
+.actionBtn {
+    display: inline-block;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+}
+
+.actionBlock {
+    text-align: center;
+}
+
+.actionBlock .actionBtn:first-child{
+    margin-right: 3em;
+}
+
+.actionBlock .actionBtn.edit {
+    opacity: 0.5;
+    background: url('../img/ico_edit.svg') top center no-repeat;
+    background-size: 100% auto;
+}
+
+.actionBlock .actionBtn.remove{
+    opacity: 0.5;
+    background: url('../img/ico_close.svg') top center no-repeat;
+    background-size: 100% auto;
 }
 
 

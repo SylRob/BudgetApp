@@ -40,6 +40,7 @@
 }
 
 #LTRBlock ul li .LTRinfos {
+    padding-top: 3%;
     display: table-cell;
     text-align: right;
 }
@@ -47,13 +48,11 @@
 #LTRBlock ul li .LTRaction{
     display: table-cell;
     vertical-align: bottom;
+    padding-top: 3%;
 }
 
 #LTRBlock ul li .LTRaction button {
-    border: none;
-    margin-right: 2em;
-    width: 2.5em;
-    height: 2.5em;
+    margin-left: 1.7em;
 }
 
 #LTRBlock ul li .LTRaction .edit{
