@@ -10,7 +10,9 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
 
     $scope.listInfo = theList.infos;
     $scope.elemsData = theList.elems;
-
+    $scope.choosedDate = "start";
+    $scope.startDate = '';
+    $scope.endDate = '';
 
     parentScope.newElem = function(){
         openModal(false);
@@ -92,6 +94,10 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         var listToDelete = new List.getInstance( listId, DB );
         listToDelete.erase();
         $location.path( '/' );
+    }
+
+    $scope.changeDateFilter = function(){
+        console.log($scope.choosedDate);
     }
 
 

@@ -24,7 +24,7 @@ document.addEventListener('deviceready', function() {
 
 }, false);
 
-var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults'])
+var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults', 'dateFilter'])
 .config( ['$routeProvider',
     function($routeProvider) {
         $routeProvider.
@@ -72,7 +72,7 @@ var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults']
         return sum;
     }
 })
-.filter('dateFormatService', function($filter){
+.filter('dateFormatFilter', function($filter){
     return function( data ){
         var dateElem = data.substr(-2, 2) + '/' + data.substr(-4, 2) + '/' +data.substr(0, 4);
         return dateElem;

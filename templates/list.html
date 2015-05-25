@@ -5,17 +5,7 @@
 </div>
 
 <div class="itemModule" id="filterBox">
-    <p>
-        From
-        <select>
-            <option value="today">Today</option>
-            <option value="thisMonth">this Month</option>
-            <option value="threeMonth">last 3 Month</option>
-            <option value="sixMonth">last 6 Month</option>
-            <option value="thisYear">this Year</option>
-            <option value="Start" selected="selected">Start</option>
-        </select>
-    </p>
+    <date-filter-directive elems-data="elemsData" choosed-date="choosedDate"></date-filter>
 </div>
 
 <div class="itemModule" id="totalBox">
@@ -46,14 +36,14 @@
 
 <div id="modalRemove" class="modal">
     <div class="modalInner">
-        <p class="title">Are you sure you want to erase <i>{{ItemToErase}}</i>?</p>
+        <p>Are you sure you want to erase <i>{{ItemToErase}}</i>?</p>
         <p class="bottomLink twoChoice"><a href="" ng-click="eraseIt(eraseId)">Yes</a><a href="" ng-click="modalClose()">No</a></p>
     </div>
 </div>
 
 <div id="modalRemoveList" class="modal">
     <div class="modalInner">
-        <p class="title">Are you sure you want to erase <i>{{listInfo.name}}</i> and all its elements ?</p>
+        <p>Are you sure you want to erase <i>{{listInfo.name}}</i> and all its elements ?</p>
         <p class="bottomLink twoChoice"><a href="" ng-click="eraseTheList()">Yes</a><a href="" ng-click="modalClose()">No</a></p>
     </div>
 </div>
