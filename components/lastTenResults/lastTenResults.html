@@ -7,8 +7,8 @@
                     {{elem.infos.name}}
                 </p>
                 <div class="LTRaction">
-                    <button class="edit actionBtn" ng-click="LTReditElem(elem.infos.id)"></button>
-                    <button class="remove actionBtn" ng-click="LTRremoveElem(elem.infos.id)"></button>
+                    <button class="edit actionBtn" ng-click="LTReditElem($index.infos.id)"></button>
+                    <button class="remove actionBtn" ng-click="LTRremoveElem($index.infos.id)"></button>
                 </div>
                 <div class="LTRinfos">
                     <p class="date">{{elem.dateOfCreation | dateFormatFilter}}</p>

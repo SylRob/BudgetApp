@@ -9,6 +9,7 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     theList = new List.getInstance( listId, DB );
 
     $scope.listInfo = theList.infos;
+    $scope.originalList = theList.elems;
     $scope.elemsData = theList.elems;
     $scope.choosedDate = "start";
     $scope.startDate = '';

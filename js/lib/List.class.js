@@ -90,8 +90,11 @@ var List = (function() {
             /*
             new List,
             set creation date*/
-            var date = new Date();
-            myObj.dateOfCreation = date.getFullYear() + (date.getMonth() < 10 ? '0'+date.getMonth() : date.getMonth()) + (date.getDate() < 10 ? '0'+date.getDate() : date.getDate())
+            var date = new Date(),
+            y = date.getFullYear(),
+            m = ((date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1)),
+            d = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate());
+            myObj.dateOfCreation = y+m+d;
             this.DB.addData( myObj );
         } else {
 
