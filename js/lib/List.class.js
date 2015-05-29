@@ -45,6 +45,7 @@ var List = (function() {
             if ( id == lists[arrID].infos.id ) {
 
                 var myList = lists[arrID];
+                _this.dateOfCreation = myList.dateOfCreation;
                 _this.setInfos( myList.infos );
                 _this.setElems( myList.elems );
 

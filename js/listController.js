@@ -11,10 +11,35 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     $scope.listInfo = theList.infos;
     $scope.originalList = theList.elems;
     $scope.elemsData = theList.elems;
-    $scope.choosedDate = "start";
     $scope.startDate = '';
     $scope.endDate = '';
+    $scope.creationDate = theList.dateOfCreation;
 
+    /**************************
+    *
+    *   Date filter
+    *
+    **************************/
+    $scope.$watch('[startDate, endDate]', function() {
+        $scope.elemsData = epurer( $scope.startDate, $scope.endDate );
+    })
+
+    function epurer(dateStart, dateEnd){
+        var data = [];
+        for(var key in $scope.originalList ) {
+            if( dateStart <= $scope.originalList[key].dateOfCreation && $scope.originalList[key].dateOfCreation <= dateEnd ) {
+                 data.push($scope.originalList[key]);
+            }
+        }
+        return data;
+    }
+
+
+    /**************************
+    *
+    *   add/remove/edit new elem
+    *
+    **************************/
     parentScope.newElem = function(){
         openModal(false);
     };
@@ -51,17 +76,11 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         openModal(true);
     }
 
-    var openModal = function( edit ){
-        if( !edit ) {
-            $scope.form.name = $scope.form.price = $scope.form.id = '';
-            $(newModalElem).find('input').val('');
-        }
-        $(newModalElem).fadeIn(500, function(){ $(newModalElem).find('input').eq(1).focus() });
-    }
-
-    $scope.modalClose = function() {
-        $('.modal:visible').fadeOut(500)
-    }
+    /**************************
+    *
+    *   edit/remove Lst
+    *
+    **************************/
 
     $scope.editList = function() {
         $('#listName input').removeAttr('disabled');
@@ -97,10 +116,24 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         $location.path( '/' );
     }
 
-    $scope.changeDateFilter = function(){
-        console.log($scope.choosedDate);
+
+    /**************************
+    *
+    *   modal functions
+    *
+    **************************/
+
+    var openModal = function( edit ){
+        if( !edit ) {
+            $scope.form.name = $scope.form.price = $scope.form.id = '';
+            $(newModalElem).find('input').val('');
+        }
+        $(newModalElem).fadeIn(500, function(){ $(newModalElem).find('input').eq(1).focus() });
     }
 
+    $scope.modalClose = function() {
+        $('.modal:visible').fadeOut(500)
+    }
 
     $scope.modalSave = function() {
 
@@ -135,6 +168,13 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         })
 
     }
+
+
+    /**************************
+    *
+    *   form validation
+    *
+    **************************/
 
     function checkForm( name, price ) {
         var dialogBox = new ngDialog.getInstance();

@@ -109,8 +109,8 @@ h1 input {
     font-size: 1.7em;
     border: 1px solid #FFFFFF;
     width: 85%;
-    background: url('../img/ico_whiteArrow.svg') #1C83D1 right center no-repeat;
-    background-size: auto 32px;
+    background: url('../img/ico_whiteArrow.svg') #1C83D1 95% center no-repeat;
+    background-size: 3% auto;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
 }

@@ -3,67 +3,71 @@ var dateFilter = angular.module('dateFilter', [])
     return {
         templateUrl : "components/dateFilter/dateFilter.html",
         scope : {
-            DFchoosedDate   : '=choosedDate',
-            DFelemsData     : '=elemsData',
-            DForiginalList  : '=originalList'
+            DFstartDate     : '=startDate',
+            DFendDate       : '=endDate',
+            DFcreationDate  : '@creationDate'
         },
         link : function($scope){
+            $scope.DFchoosedDate = 'start';
             var date = new Date(),
             year = date.getFullYear(),
             month = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1),
             day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate(),
-            data = [];
+            data = [],
+            indice = 0;
 
-            $scope.DFfrom = getFormatedDate( year+month+day );
+            $scope.DFfrom = getFormatedDate( $scope.DFcreationDate );
             $scope.DFto = getFormatedDate( year+month+day );
 
         	$scope.changeDateFilter = function(){
                 switch ($scope.DFchoosedDate) {
                     case 'start':
-                        $scope.startDate = 0;
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = $scope.DFcreationDate;
+                        $scope.DFendDate = year+month+day;
                         break;
                     case 'today':
-                        $scope.startDate = year+month+day;
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = year+month+day;
+                        $scope.DFendDate = year+month+day;
                         break;
                     case 'week':
-                        $scope.startDate = getInlineDate(-7, 'day', date);
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = getInlineDate(-7, 'day', date);
+                        $scope.DFendDate = year+month+day;
                         break;
                     case 'month':
-                        $scope.startDate = getInlineDate(-1, 'month', date);
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = getInlineDate(-1, 'month', date);
+                        $scope.DFendDate = year+month+day;
                         break;
-                    case 'threeMonth':
-                        $scope.startDate = getInlineDate(-3, 'month', date);
-                        $scope.endDate = year+month+day;
+                    case '3 Month':
+                        $scope.DFstartDate = getInlineDate(-3, 'month', date);
+                        $scope.DFendDate = year+month+day;
                         break;
-                    case 'sixMonth':
-                        $scope.startDate = getInlineDate(-6, 'month', date);
-                        $scope.endDate = year+month+day;
+                    case '6 Month':
+                        $scope.DFstartDate = getInlineDate(-6, 'month', date);
+                        $scope.DFendDate = year+month+day;
                         break;
                     case 'year':
-                        $scope.startDate = getInlineDate(-1, 'year', date);
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = getInlineDate(-1, 'year', date);
+                        $scope.DFendDate = year+month+day;
                         break;
                     default:
-                        $scope.startDate = 0;
-                        $scope.endDate = year+month+day;
+                        $scope.DFstartDate = 0;
+                        $scope.DFendDate = year+month+day;
                 }
-                $scope.DFelemsData = [];
-                $scope.DFelemsData = epurer( $scope.startDate, $scope.endDate );
+
+                $scope.DFfrom = getFormatedDate( $scope.DFstartDate );
+                $scope.DFto = getFormatedDate( $scope.DFendDate );
 
         	}
 
-            function epurer(dateStart, dateEnd){
-                data = [];
-                for(var key in $scope.DForiginalList ) {
-                    if( dateStart <= $scope.DForiginalList[key].dateOfCreation && $scope.DForiginalList[key].dateOfCreation <= dateEnd ) {
-                         data.push($scope.DForiginalList[key]);
-                    }
-                }
-                return data;
+            //trigger it for first turn
+            $scope.changeDateFilter();
+
+            $scope.DFprev = function(){
+
+            }
+
+            $scope.DFnext = function(){
+
             }
 
             function getInlineDate( nbrToSub, monthYearDay, date ){
@@ -87,6 +91,9 @@ var dateFilter = angular.module('dateFilter', [])
             }
 
             function getFormatedDate(inlineDate){
+
+                var fullDate = moment( inlineDate, 'YYYYMMDD' );
+
                 return inlineDate;
             }
 

@@ -1,18 +1,33 @@
 <div id="DFwrapper">
 
 	<p>
-        Filter by date : 
+        Filter by date :
         <select ng-model="DFchoosedDate" ng-change="changeDateFilter()">
             <option value="today">Today</option>
-			<option value="week">1 week</option>
-            <option value="month">1 Month</option>
-            <option value="threeMonth">last 3 Month</option>
-            <option value="sixMonth">last 6 Month</option>
-            <option value="year">1 Year</option>
+			<option value="week">Week</option>
+            <option value="month">Month</option>
+            <option value="3 Month">3 Month</option>
+            <option value="6 Month">6 Month</option>
+            <option value="year">Year</option>
             <option value="start">Start</option>
         </select>
     </p>
 	<div id="DFsecondChoice">
-		{{DFfrom}} to {{DFto}}
+		<div class="navArrow" ng-click="DFprev()"></div>
+		<div class="inner">
+			<p class="title">{{DFchoosedDate}}</p>
+			<div class="range">
+				<div class="from">
+					<p class="day">{{DFfrom.day}}</p>
+					<p class="date">{{DFfrom.date}}</p>
+				</div>
+				<div>to</div>
+				<div class="to">
+					<p class="day">{{DFto.day}}</p>
+					<p class="date">{{DFto.date}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="navArrow" ng-click="DFnext()"></div>
 	</div>
 </div>

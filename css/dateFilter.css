@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+#DFwrapper {
+    padding: 3%;
+}
+
+#DFsecondChoice {
+    text-align: center;
+    border-top: 3px solid #CCC;
+    padding: 2% 0;
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+#DFsecondChoice .navArrow {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    width: 10%;
+    border: 1px solid #CCC;
+    background: url('../img/ico_whiteArrow.svg') center center no-repeat;
+    background-size: 38% auto;
+    cursor: pointer;
+}
+
+#DFsecondChoice .navArrow:first-child {
+    left: 95%;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+#DFsecondChoice .inner {
+    display: table-cell;
+}
+
+#DFsecondChoice .title {
+    text-transform: uppercase;
+    margin-bottom: 8%;
+    font-size: 3em;
+}
+
+#DFsecondChoice .range {
+    display: table;
+    width: 100%;
+}
+
+#DFsecondChoice .range > div {
+    display: table-cell;
+}
