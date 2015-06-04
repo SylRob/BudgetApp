@@ -2,7 +2,7 @@
     <h3>Last 5 entry</h3>
     <div id="LTRBlock">
         <ul>
-            <li ng-repeat="elem in LTRelemsData">
+            <li ng-repeat="elem in LTRelemsData track by $index">
                 <p class="LTRname">
                     {{elem.infos.name}}
                 </p>

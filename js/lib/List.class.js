@@ -86,6 +86,7 @@ var List = (function() {
         var myObj = {};
         myObj.infos = this.infos;
         myObj.elems = this.elems;
+        myObj.infos.nbrOfElements = this.elems.length;
 
         if (!update) {
             /*
@@ -105,6 +106,7 @@ var List = (function() {
 
                 if ( _this.infos.id == lists[arrID].infos.id ) {
 
+                    myObj.dateOfCreation = lists[arrID].dateOfCreation;
                     lists[arrID] = myObj;
 
                     _this.DB.storeElem( lists );

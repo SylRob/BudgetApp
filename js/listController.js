@@ -8,12 +8,19 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     parentScope = $scope.$parent,
     theList = new List.getInstance( listId, DB );
 
+    $scope.oldestElem = 9999999999;
+    $scope.newestElem = 0;
     $scope.listInfo = theList.infos;
     $scope.originalList = theList.elems;
     $scope.elemsData = theList.elems;
     $scope.startDate = '';
     $scope.endDate = '';
-    $scope.creationDate = theList.dateOfCreation;
+
+    //Set oldest and newest date
+    for( var idElem in $scope.elemsData ) {
+        if( $scope.elemsData[idElem].dateOfCreation > $scope.newestElem ) $scope.newestElem = $scope.elemsData[idElem].dateOfCreation;
+        if( $scope.elemsData[idElem].dateOfCreation < $scope.oldestElem ) $scope.oldestElem = $scope.elemsData[idElem].dateOfCreation;
+    }
 
     /**************************
     *

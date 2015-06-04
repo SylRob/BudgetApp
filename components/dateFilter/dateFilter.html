@@ -3,7 +3,7 @@
 	<p>
         Filter by date :
         <select ng-model="DFchoosedDate" ng-change="changeDateFilter()">
-            <option value="today">Today</option>
+            <option value="day">Day</option>
 			<option value="week">Week</option>
             <option value="month">Month</option>
             <option value="3 Month">3 Month</option>
@@ -13,21 +13,71 @@
         </select>
     </p>
 	<div id="DFsecondChoice">
-		<div class="navArrow" ng-click="DFprev()"></div>
+		<div class="navArrow" ng-click="DFprev()" ng-class="DFstartDate <= DFoldestElem ? 'disable' : ''"></div>
 		<div class="inner">
 			<p class="title">{{DFchoosedDate}}</p>
-			<div class="range">
+
+			<div class="range day" ng-if="DFchoosedDate == 'day'">
+				<div class="full">
+					<p class="name">{{DFfrom.day}}</p>
+					<p class="date">{{DFfrom.date}}</p>
+				</div>
+			</div>
+
+			<div class="range start week" ng-if="DFchoosedDate == 'start' || DFchoosedDate == 'week'">
 				<div class="from">
-					<p class="day">{{DFfrom.day}}</p>
+					<p class="name">{{DFfrom.day}}</p>
 					<p class="date">{{DFfrom.date}}</p>
 				</div>
 				<div>to</div>
 				<div class="to">
-					<p class="day">{{DFto.day}}</p>
+					<p class="name">{{DFto.day}}</p>
 					<p class="date">{{DFto.date}}</p>
 				</div>
 			</div>
+
+			<div class="range month" ng-if="DFchoosedDate == 'month'">
+				<div class="full">
+					<p class="name">{{DFfrom.month}}</p>
+					<p class="date">{{DFfrom.year}}</p>
+				</div>
+			</div>
+
+			<div class="range threeMonth" ng-if="DFchoosedDate == '3 Month'">
+				<div class="from">
+					<p class="name">{{DFfrom.month}}</p>
+				</div>
+				<div>
+					to<br />
+					<p class="date">{{DFto.year}}</p>
+				</div>
+				<div class="to">
+					<p class="name">{{DFto.month}}</p>
+
+				</div>
+			</div>
+
+			<div class="range sixMonth" ng-if="DFchoosedDate == '6 Month'">
+				<div class="from">
+					<p class="name">{{DFfrom.month}}</p>
+				</div>
+				<div>
+					to<br />
+					<p class="date">{{DFto.year}}</p>
+				</div>
+				<div class="to">
+					<p class="name">{{DFto.month}}</p>
+
+				</div>
+			</div>
+
+			<div class="range year" ng-if="DFchoosedDate == 'year'">
+				<div class="full">
+					<p class="name">{{DFfrom.year}}</p>
+				</div>
+			</div>
+
 		</div>
-		<div class="navArrow" ng-click="DFnext()"></div>
+		<div class="navArrow" ng-click="DFnext()" ng-class="DFendDate >= DFnewestElem ? 'disable' : ''"></div>
 	</div>
 </div>
