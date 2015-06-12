@@ -136,11 +136,15 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     **************************/
 
     var openModal = function( edit ){
+        //need to be repeated...
+        newModalElem = document.getElementById('modalNew');
         if( !edit ) {
             $scope.form.name = $scope.form.price = $scope.form.id = '';
             $(newModalElem).find('input').val('');
         }
-        $(newModalElem).fadeIn(500, function(){ $(newModalElem).find('input').eq(1).focus() });
+        $(newModalElem).fadeIn(500, function(){
+            $(newModalElem).find('input').eq(1).focus()
+        });
     }
 
     $scope.modalClose = function() {

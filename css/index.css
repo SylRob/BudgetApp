@@ -56,7 +56,8 @@ i {
     width: 100%;
     /*height: 100%;*/
     background-color: #2ca4ad;
-    overflow: auto;
+    overflow: visible;
+    position: relative;
 }
 
 #newBtn {
@@ -106,6 +107,7 @@ h1 input[type="text"][disabled] {
 .mainContainer {
     padding: 10em 0 3em;
     position: relative;
+    z-index: 2;
 }
 
 .list {
@@ -357,10 +359,12 @@ h1 input[type="text"][disabled] {
 }
 */
 .RL .ng-enter,
-.RL .ng-leave {
+.RL .ng-leave,
+.LR .ng-enter,
+.LR .ng-leave {
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
 }
@@ -374,18 +378,12 @@ h1 input[type="text"][disabled] {
 }
 
 .RL .ng-leave {
+    position: absolute;
     left: 0;
 }
 
 .RL .ng-leave-active {
     left: -100%;
-}
-
-
-.LR .ng-enter,
-.LR .ng-leave {
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
 }
 
 .LR .ng-enter {
@@ -398,8 +396,6 @@ h1 input[type="text"][disabled] {
 
 .LR .ng-leave {
     position: absolute;
-    top: 0;
-    width: 100%;
     left: 0;
 }
 
