@@ -25,9 +25,7 @@ var MainController = function ( $scope, $animate, $routeParams, $rootScope, $loc
 
         $animate.on('enter', viewElem, function callback(element, phase) {
 
-            console.log(phase)
             if (phase === 'close') {
-                console.log('close');
                 $animate.removeClass(viewElem, $scope.pageClass);
             }
         });
