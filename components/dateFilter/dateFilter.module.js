@@ -10,19 +10,20 @@ var dateFilter = angular.module('dateFilter', [])
         },
         link : function($scope){
 
-            $scope.DFchoosedDate = 'start';
-            var today = moment().format('YYYYMMDD'),
-            indice = 0,
-            dateToPass = today,
+            var today       = moment().format('YYYYMMDD'),
             DFnewestElemVar = $scope.DFnewestElem == 0 ? today : $scope.DFnewestElem,
-            DFoldestElemVar = $scope.DFnewestElem == 0 ? today : $scope.DFoldestElem;
+            DFoldestElemVar = $scope.DFnewestElem == 0 ? today : $scope.DFoldestElem,
+            firstDate       = DFnewestElemVar,
+            indice          = 0,
+            dateToPass      = firstDate;
 
-            $scope.DFfrom = getFormatedDate( DFoldestElemVar );
-            $scope.DFto = getFormatedDate( DFnewestElemVar );
+            $scope.DFchoosedDate    = 'start';
+            $scope.DFfrom           = getFormatedDate( DFoldestElemVar );
+            $scope.DFto             = getFormatedDate( DFnewestElemVar );
 
         	$scope.changeDateFilter = function(){
                 indice = 0;
-                $scope.DFstartDate = dateToPass = today;
+                $scope.DFstartDate = dateToPass = firstDate;
                 applyFilter();
 
         	}
@@ -36,19 +37,19 @@ var dateFilter = angular.module('dateFilter', [])
                 switch ($scope.DFchoosedDate) {
                     case 'start':
                         $scope.DFstartDate = DFoldestElemVar;
-                        $scope.DFendDate = today;
+                        $scope.DFendDate = firstDate;
                         break;
                     case 'day':
-                        $scope.DFstartDate = getInlineDate(indice, 'day', today);
+                        $scope.DFstartDate = getInlineDate(indice, 'day', firstDate);
                         $scope.DFendDate = $scope.DFstartDate;
                         break;
                     case 'week':
-                        $scope.DFstartDate = getInlineDate(indice, 'week', today, 'start');
-                        $scope.DFendDate = getInlineDate(indice, 'week', today, 'end');
+                        $scope.DFstartDate = getInlineDate(indice, 'week', firstDate, 'start');
+                        $scope.DFendDate = getInlineDate(indice, 'week', firstDate, 'end');
                         break;
                     case 'month':
-                        $scope.DFstartDate = getInlineDate(indice, 'month', today, 'start');
-                        $scope.DFendDate = getInlineDate(indice, 'month', today, 'end');
+                        $scope.DFstartDate = getInlineDate(indice, 'month', firstDate, 'start');
+                        $scope.DFendDate = getInlineDate(indice, 'month', firstDate, 'end');
                         break;
                     case '3 Month':
                         if( side == 'next' ){
@@ -71,12 +72,12 @@ var dateFilter = angular.module('dateFilter', [])
 
                         break;
                     case 'year':
-                        $scope.DFstartDate = getInlineDate(indice, 'year', today, 'start');
-                        $scope.DFendDate = getInlineDate(indice, 'year', today, 'end');
+                        $scope.DFstartDate = getInlineDate(indice, 'year', firstDate, 'start');
+                        $scope.DFendDate = getInlineDate(indice, 'year', firstDate, 'end');
                         break;
                     default:
                         $scope.DFstartDate = DFoldestElemVar;
-                        $scope.DFendDate = today;
+                        $scope.DFendDate = firstDate;
                 }
 
                 $scope.DFfrom = getFormatedDate( $scope.DFstartDate );
@@ -88,18 +89,50 @@ var dateFilter = angular.module('dateFilter', [])
 
                 if( $scope.DFstartDate <= $scope.DFoldestElem ) return false;
 
-                indice = indice-1;
-                dateToPass = $scope.DFstartDate;
-                applyFilter( 'prev' );
+                var elem = $('#DFsecondChoice .inner .range'),
+                elemW = $('#DFsecondChoice .inner').width();
+
+                elem.animate({
+                    left : elemW
+                }, 200, 'linear', function(){
+
+                    $(this).css({
+                        left : (elemW*-1)
+                    }).animate({
+                        left : 0
+                    }, 200);
+
+                    indice = indice-1;
+                    dateToPass = $scope.DFstartDate;
+                    applyFilter( 'prev' );
+                    $scope.$apply();
+                })
             }
 
             $scope.DFnext = function(){
 
                 if( $scope.DFendDate >= $scope.DFnewestElem ) return false;
 
-                indice = indice+1;
-                dateToPass = $scope.DFendDate;
-                applyFilter( 'next' );
+                var elem = $('#DFsecondChoice .inner .range'),
+                elemW = $('#DFsecondChoice .inner').width();
+
+                elem.animate({
+                    left : (elemW*-1)
+                }, 200, 'linear', function(){
+
+                    $(this).css({
+                        left : elemW
+                    }).animate({
+                        left : 0
+                    }, 200)
+
+                    indice = indice+1;
+                    dateToPass = $scope.DFendDate;
+                    applyFilter( 'next' );
+                    $scope.$apply();
+
+                });
+
             }
 
 

@@ -20,6 +20,7 @@ var HomeController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     }
 
     $scope.goTo = function(id) {
+        parentScope.pageClass = 'RL';
         $location.path( '/'+id+'/Overview' );
     }
 

@@ -23,7 +23,7 @@
     height: 100%;
     width: 10%;
     border: 1px solid #CCC;
-    background: url('../img/ico_whiteArrow.svg') center center no-repeat;
+    background: url('../img/ico_whiteArrow.png') center center no-repeat;
     background-size: 38% auto;
     cursor: pointer;
 }
@@ -45,6 +45,7 @@
 #DFsecondChoice .inner {
     display: table-cell;
     padding: 0 4%;
+    overflow: hidden;
 }
 
 #DFsecondChoice .title {
@@ -56,6 +57,9 @@
 #DFsecondChoice .range {
     display: table;
     width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 #DFsecondChoice .range > div {

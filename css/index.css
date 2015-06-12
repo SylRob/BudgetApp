@@ -105,6 +105,7 @@ h1 input[type="text"][disabled] {
 
 .mainContainer {
     padding: 10em 0 3em;
+    position: relative;
 }
 
 .list {
@@ -114,7 +115,7 @@ h1 input[type="text"][disabled] {
     font-size: 1.7em;
     border: 1px solid #FFFFFF;
     width: 85%;
-    background: url('../img/ico_whiteArrow.svg') #1C83D1 95% center no-repeat;
+    background: url('../img/ico_whiteArrow.png') #1C83D1 95% center no-repeat;
     background-size: 3% auto;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -297,8 +298,18 @@ h1 input[type="text"][disabled] {
     text-align: center;
 }
 
+.actionBlock .actionBtn{
+    margin-left: 3em;
+}
+
 .actionBlock .actionBtn:first-child{
-    margin-right: 3em;
+    margin-left: 0em;
+}
+
+.actionBlock .actionBtn.back {
+    opacity: 0.5;
+    background: url('../img/ico_back.svg') top center no-repeat;
+    background-size: 100% auto;
 }
 
 .actionBlock .actionBtn.edit {
@@ -314,12 +325,101 @@ h1 input[type="text"][disabled] {
 }
 
 
+/*********************
+*
+*   pages animations
+*
+********************/
+/*
+.mainContainer.ng-enter,
+.mainContainer.ng-leave {
+    -webkit-transition: all 20s ease;
+    transition: all 20s ease;
+}
+
+.mainContainer.ng-enter {
+    left: 100%;
+}
+
+.mainContainer.ng-enter-active {
+    left: 0%;
+}
+
+.mainContainer.ng-leave {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+.mainContainer.ng-leave-active {
+    left: -100%;
+}
+*/
+.RL .ng-enter,
+.RL .ng-leave {
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.RL .ng-enter {
+    left: 100%;
+}
+
+.RL .ng-enter-active {
+    left: 0%;
+}
+
+.RL .ng-leave {
+    left: 0;
+}
+
+.RL .ng-leave-active {
+    left: -100%;
+}
+
+
+.LR .ng-enter,
+.LR .ng-leave {
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.LR .ng-enter {
+    left: -100%;
+}
+
+.LR .ng-enter-active {
+    left: 0%;
+}
+
+.LR .ng-leave {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+.LR .ng-leave-active {
+    left: 100%;
+}
+
+
+
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 
 }
 
 @media screen and (max-width: 500px) {
+
+    body {
+        font-size: 9px;
+    }
 
     #newBtn {
         line-height: 70px;

@@ -19,12 +19,10 @@
 
 document.addEventListener('deviceready', function() {
 
-    console.log("deviceready");
-
 
 }, false);
 
-var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults', 'dateFilter'])
+var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'ngAnimate', 'lastTenResults', 'dateFilter'])
 .config( ['$routeProvider',
     function($routeProvider) {
         $routeProvider.
@@ -78,6 +76,6 @@ var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'lastTenResults',
         return dateElem;
     }
 })
-.controller('MainController', ['$scope', '$routeParams', '$location', 'DB', MainController])
+.controller('MainController', ['$scope', '$animate', '$routeParams', '$rootScope', '$location', 'DB', MainController])
 .controller('HomeController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', HomeController])
 .controller('ListController', ['$scope', '$routeParams', '$location', 'DB', 'ngDialog', 'List', 'Item', ListController]);

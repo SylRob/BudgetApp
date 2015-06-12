@@ -123,6 +123,11 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         $location.path( '/' );
     }
 
+    $scope.goBack = function() {
+        parentScope.pageClass = 'LR';
+        $location.path( '/' );
+    }
+
 
     /**************************
     *

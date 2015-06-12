@@ -1,5 +1,6 @@
 <h1 id="listName"><input value="{{listInfo.name}}" type="text" disabled="disabled" /></h1>
 <div class="actionBlock">
+    <button class="back actionBtn" ng-click="goBack()"></button>
     <button class="edit actionBtn" ng-click="editList()"></button>
     <button class="remove actionBtn" ng-click="removeList()"></button>
 </div>
@@ -9,7 +10,7 @@
 </div>
 
 <div class="itemModule" id="totalBox">
-    <p><span>Total :</span><span>{{elemsData | sumOfPriceService:'price'}}&euro;<span></p>
+    <p><span>Total :</span><span>{{elemsData | sumOfPriceService:'price'}}&#20870;<span></p>
 </div>
 
 <div class="itemModule">
@@ -27,7 +28,7 @@
             </p>
             <p class="form">
                 <label for="inputName">Price :</label>
-                <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" value="{{form.price}}" /> &euro;
+                <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" value="{{form.price}}" /> &#20870;
             </p>
         </form>
         <p class="bottomLink twoChoice"><a href="" ng-click="modalSave()">Save</a><a href="" ng-click="modalClose()">Cancel</a></p>

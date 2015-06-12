@@ -35,12 +35,14 @@
     </head>
     <body>
         <div id="wrapper" ng-controller="MainController">
-            <div class="ng-view mainContainer"></div>
+            <div ng-view="" class="mainContainer"></div>
             <div id="newBtn" ng-click="newElem()">+</div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/lib/jQuery.2.1.1.min.js"></script>
         <script type="text/javascript" src="js/lib/angular.js"></script>
+        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
         <script type="text/javascript" src="js/lib/DB.class.js"></script>
         <script type="text/javascript" src="js/lib/Item.class.js"></script>
         <script type="text/javascript" src="js/lib/List.class.js"></script>
@@ -48,7 +50,6 @@
         <script type="text/javascript" src="components/lastTenResults/lastTenResults.module.js"></script>
         <script type="text/javascript" src="components/dateFilter/dateFilter.module.js"></script>
         <script type="text/javascript" src="js/lib/ngDialog.class.js"></script>
-        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
         <script type="text/javascript" src="js/mainController.js"></script>
         <script type="text/javascript" src="js/homeController.js"></script>
         <script type="text/javascript" src="js/listController.js"></script>
