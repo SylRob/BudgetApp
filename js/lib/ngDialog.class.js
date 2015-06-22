@@ -61,6 +61,9 @@ var ngDialog = (function() {
     }
 
     ngDialog.prototype.noJquery = function() {
+        throw new Error('This module need jQuery');
+        return false;
+
         var self = this;
         setTimeout(function(){
             self.destroy();
