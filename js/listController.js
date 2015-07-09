@@ -5,6 +5,15 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     newModalElem = document.getElementById('modalNew'),
     eraseItem = document.getElementById('modalRemove'),
     eraseList = document.getElementById('modalRemoveList'),
+    picker = new Pikaday({
+        field: document.getElementById('datepicker'),
+        container: document.getElementById('calendar'),
+        bound: false,
+        format: 'YYYYMMDD',
+        onSelect: function() {
+            formDateUpdate(this.getMoment().format('YYYYMMDD'));
+        }
+    }),
     parentScope = $scope.$parent,
     theList = new List.getInstance( listId, DB );
 
@@ -48,6 +57,8 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     *
     **************************/
     parentScope.newElem = function(){
+        picker.setMoment(moment())
+        picker.show();
         openModal(false);
     };
 
@@ -79,6 +90,10 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
         $scope.form.name = itemObj.infos.name;
         $scope.form.price = itemObj.infos.price;
         $scope.form.id = itemObj.infos.id;
+        $scope.form.date = itemObj.dateOfCreation;
+
+        picker.setMoment(moment(itemObj.dateOfCreation, 'YYYYMMDD'));
+        picker.show();
 
         openModal(true);
     }
@@ -155,7 +170,8 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
 
         var name = $scope.form.name || '',
         price = $scope.form.price || '',
-        idElem = $scope.form.id || false;
+        idElem = $scope.form.id || false,
+        dateElem = $scope.form.date || false;
 
         if( false === checkForm(name, price) ) return false;
 
@@ -168,6 +184,7 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
 
         var itemToSave = new Item.getInstance( !idElem ? false : idElem, theList );
         itemToSave.setInfos( myNewItemObj );
+        itemToSave.setDateOfCreation( dateElem );
         itemToSave.save( !idElem ? false : true );
 
         var itemId = myNewItemObj.id;
@@ -191,6 +208,14 @@ var ListController = function ( $scope, $routeParams, $location, DB, ngDialog, L
     *   form validation
     *
     **************************/
+
+    function formDateUpdate( newDate ) {
+
+        var verifDate = moment(newDate,'YYYYMMDD');
+
+        if( verifDate.isValid() )
+            $scope.form.date = newDate;
+    }
 
     function checkForm( name, price ) {
         var dialogBox = new ngDialog.getInstance();

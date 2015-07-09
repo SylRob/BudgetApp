@@ -30,6 +30,8 @@
                 <label for="inputName">Price :</label>
                 <input name="inputPrice" ng-model="form.price" id="inputPrice" type="text" value="{{form.price}}" /> &#20870;
             </p>
+            <input type="hidden" id="datepicker" value="{{form.date}}" ng-model="form.date" ng-change="formDateUpdate()">
+            <div id="calendar"></div>
         </form>
         <p class="bottomLink twoChoice"><a href="" ng-click="modalSave()">Save</a><a href="" ng-click="modalClose()">Cancel</a></p>
     </div>

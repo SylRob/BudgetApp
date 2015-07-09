@@ -8,6 +8,25 @@
     padding: 3%;
 }
 
+#DFfilterBlock {
+    display: table;
+    width: 100%;
+}
+
+#DFfilterBlock > p, #DFfilterBlock > select {
+    display: table-cell;
+    height: 2em;
+    font-size: 1.5em;
+}
+
+#DFfilterBlock > p {
+    width: 35%;
+}
+
+#DFfilterBlock > select {
+    width: 100%;
+}
+
 #DFsecondChoice {
     text-align: center;
     border-top: 3px solid #CCC;

@@ -22,7 +22,7 @@ document.addEventListener('deviceready', function() {
 
 }, false);
 
-var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'ngAnimate', 'lastTenResults', 'dateFilter'])
+var angularBudgetApp = angular.module('BudgetApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'lastTenResults', 'dateFilter'])
 .config( ['$routeProvider',
     function($routeProvider) {
         $routeProvider.

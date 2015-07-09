@@ -23,6 +23,11 @@ var Item = (function() {
         this.infos.price = data.price || this.infos.price;
     }
 
+    Item.prototype.setDateOfCreation = function( date ) {
+
+        this.dateOfCreation = date;
+    }
+
     Item.prototype.getFromId = function( id ){
 
         var _this = this;
@@ -72,16 +77,12 @@ var Item = (function() {
         var myObj = {};
 
         myObj.infos = this.infos;
+        myObj.dateOfCreation = this.dateOfCreation;
 
         if (!update) {
             /*
             new Item,
             set creation date*/
-            var date = new Date(),
-            y = date.getFullYear(),
-            m = ((date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1)),
-            d = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate());
-            myObj.dateOfCreation = y+m+d;
             this.List.addItem( myObj );
         } else {
 
@@ -89,15 +90,12 @@ var Item = (function() {
             for( var arrID in items ) {
 
                 if ( _this.infos.id == items[arrID].infos.id ) {
-                    myObj.dateOfCreation = _this.dateOfCreation;
-
                     items[arrID] = myObj;
-
                     _this.List.setElems( items );
                     _this.List.save(true);
 
                     break;
-                }
+                } else { }
             }
 
         }

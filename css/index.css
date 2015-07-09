@@ -72,7 +72,7 @@ i {
     width: 100px;
     height: 100px;
     z-index: 8;
-    background-color: #2b7a53;
+    background-color: #1C83D1;
     border: 1px solid #FFFFFF;
     cursor: pointer;
     -webkit-box-shadow: 2px 5px 2px 2px rgba(0, 0, 0, 0.3);
@@ -131,6 +131,7 @@ h1 input[type="text"][disabled] {
     height: 100%;
     background-color: rgba( 0, 0, 0, 0.2);
     z-index: 15;
+    overflow: auto;
     display: none;
 }
 
@@ -180,8 +181,8 @@ h1 input[type="text"][disabled] {
 }
 
 .modal .bottomLink {
-    padding-top: 2.2em;
-    text-align: center;;
+    padding-top: 1.8em;
+    text-align: center;
 }
 
 .modal .bottomLink a {
@@ -246,7 +247,9 @@ h1 input[type="text"][disabled] {
     display: none;
 }
 
-
+#calendar {
+    margin-top: 9%;
+}
 
 /***
 

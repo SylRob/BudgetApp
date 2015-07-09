@@ -1,4 +1,4 @@
-var dateFilter = angular.module('dateFilter', [])
+var dateFilter = angular.module('dateFilter', ['ngTouch'])
 .directive('dateFilterDirective', function(){
     return {
         templateUrl : "components/dateFilter/dateFilter.html",
@@ -17,7 +17,7 @@ var dateFilter = angular.module('dateFilter', [])
             indice          = 0,
             dateToPass      = firstDate;
 
-            $scope.DFchoosedDate    = 'start';
+            $scope.DFchoosedDate    = 'month';
             $scope.DFfrom           = getFormatedDate( DFoldestElemVar );
             $scope.DFto             = getFormatedDate( DFnewestElemVar );
 

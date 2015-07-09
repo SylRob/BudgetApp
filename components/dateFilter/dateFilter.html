@@ -1,7 +1,9 @@
 <div id="DFwrapper">
 
-	<p>
-        Filter by date :
+	<div id="DFfilterBlock">
+		<p>
+        	Filter by date :
+		</p>
         <select ng-model="DFchoosedDate" ng-change="changeDateFilter()">
             <option value="day">Day</option>
 			<option value="week">Week</option>
@@ -11,8 +13,8 @@
             <option value="year">Year</option>
             <option value="start">Start</option>
         </select>
-    </p>
-	<div id="DFsecondChoice">
+    </div>
+	<div id="DFsecondChoice" ng-swipe-left="DFnext()"  ng-swipe-right="DFprev()">
 		<div class="navArrow" ng-click="DFprev()" ng-class="DFstartDate <= DFoldestElem ? 'disable' : ''"></div>
 		<div class="inner">
 			<p class="title">{{DFchoosedDate}}</p>
